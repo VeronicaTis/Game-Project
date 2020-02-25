@@ -1,4 +1,4 @@
-body > a
+body > div
 {
     position: relative;
     height: 50px;
@@ -7,6 +7,9 @@ body > a
     background-color: black;
     margin-bottom: 10px;
     color: red;
+    font-size: 2em;
+    font-family: monospace;
+    width: 125px;
 }
 
 table
@@ -21,4 +24,29 @@ td
     width: 64px;
     height: 64px;
     border: 2px black solid;
+}
+
+td[name="block"]
+{
+    background-color: black;
+}
+
+td[name="path"]
+{
+    background-color: beige;
+}
+
+td[name="obstacle"]
+{
+    background-color: red;
+}
+
+td[name="finish"]
+{
+    background-color: green;
+}
+
+td[name="player"]
+{
+    background-color: orange;
 }
