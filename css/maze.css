@@ -1,0 +1,24 @@
+body > a
+{
+    position: relative;
+    height: 50px;
+    border-radius: 10px;
+    border: gray solid 5px;
+    background-color: black;
+    margin-bottom: 10px;
+    color: red;
+}
+
+table
+{
+    border: black solid 15px;
+    border-collapse: collapse;
+}
+
+
+td
+{
+    width: 64px;
+    height: 64px;
+    border: 2px black solid;
+}

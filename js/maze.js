@@ -28,3 +28,34 @@ function incrementSeconds() {
 }
 
 var cancel = setInterval(incrementSeconds, 1000);
+
+
+var Grid = 
+[
+    [ , , , , ],
+    [ , , , , ],
+    [ , , , , ],
+    [ , , , , ], 
+    [ , , , , ]
+]
+
+var position = Grid[x][y];
+
+var openArea = 1;
+var block = 2;
+var obstacle = 3;
+
+var startPosition = Grid[0][3];
+
+
+function move(event)
+{
+    var r = event.key;
+    if (r == "w")
+    {
+        for (count = 0; count < Grid; count++)
+        {
+            Grid[x][y - 1];
+        }
+    }
+}
