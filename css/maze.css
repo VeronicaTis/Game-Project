@@ -36,29 +36,31 @@ table#L1
     width: 64px;
     height: 64px;
     border: 2px black solid;
+    transition: 0.2s;
+    
 }
 
-td[name="block"]
+td.block
 {
     background-color: black;
 }
 
-td[name="path"]
+td.path
 {
     background-color: beige;
 }
 
-td[name="obstacle"]
+td.obstacle
 {
     background-color: red;
 }
 
-td[name="finish"]
+td.finish
 {
     background-color: green;
 }
 
-td[name="player"]
+td.player
 {
     background-color: orange;
 }

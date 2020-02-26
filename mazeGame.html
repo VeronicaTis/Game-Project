@@ -10,143 +10,153 @@
     </head>
     
 
+    <body onkeydown="moveUp(event),moveDown(event),moveRight(event),moveLeft(event)">
+        <div>
     <body onkeydown="moveUp(event)" onkeypress="moveDown(event)">
         <div class="head">Do you know the way maze</div>
         <div class="time">
         <a id="minuteDisplay"></a>
         <a id="secondDisplay"></a>
         </div>
+
+        <div id="lifeDisplay"></div>
+        <div id="scoreDisplay"></div>
+
+        <button onclick="createTable()">CLICK</button>
         
         <script src="js/maze.js"></script>
 
+        <!--Table Row setup, and columns-->
 
         <table id ="L1">
             <tr id="y0">
+                <td id="P4-0" class="player">
+
                 <td id="P0-0" name="player">
                     
                 </td>
 
 
-                <td id="P0-1" name="block">
+                <td id="P3-0" class="block">
 
                 </td>
 
 
-                <td id="P0-2" name="block">
+                <td id="P2-0" class="block">
 
                 </td>
 
 
-                <td id="P0-3" name="block">
+                <td id="P1-0" class="block">
 
                 </td>
 
 
-                <td id="P0-4" name="block">
+                <td id="P0-0" class="block">
 
                 </td>
             </tr>
 
             <tr id="y1">
-                <td id="P1-0" name="path">
+                <td id="P4-1" class="path">
 
                 </td>
 
 
-                <td id="P1-1" name="block">
+                <td id="P3-1" class="block">
 
                 </td>
 
 
-                <td id="P1-2" name="block">
+                <td id="P2-1" class="block">
 
                 </td>
 
 
-                <td id="P1-3" name="block">
+                <td id="P1-1" class="block">
 
                 </td>
 
 
-                <td id="P1-4" name="block">
+                <td id="P0-1" class="block">
 
                 </td>
             </tr>
 
             <tr id="y2">
-                <td id="P2-0" name="path">
+                <td id="P4-2" class="path">
 
                 </td>
 
 
-                <td id="P2-1" name="path">
+                <td id="P3-2" class="path">
 
                 </td>
 
 
-                <td id="P2-2" name="path">
+                <td id="P2-2" class="path">
 
                 </td>
 
 
-                <td id="P2-3" name="obstacle">
+                <td id="P1-2" class="obstacle">
 
                 </td>
 
 
-                <td id="P2-4" name="path">
+                <td id="P0-2" class="path">
 
                 </td>
             </tr>
 
             <tr id="y3">
-                <td id="P3-0" name="block">
+                <td id="P4-3" class="block">
 
                 </td>
 
 
-                <td id="P3-1" name="block">
+                <td id="P3-3" class="block">
 
                 </td>
 
 
-                <td id="P3-2" name="path">
+                <td id="P2-3" class="path">
 
                 </td>
 
 
-                <td id="P3-3" name="block">
+                <td id="P1-3" class="block">
 
                 </td>
 
 
-                <td id="P3-4" name="path">
+                <td id="P0-3" class="path">
 
                 </td>
             </tr>
 
             <tr id="y4">
-                <td id="P4-0" name="block">
+                <td id="P4-4" class="block">
 
                 </td>
 
 
-                <td id="P4-1" name="block">
+                <td id="P3-4" class="block">
 
                 </td>
 
 
-                <td id="P4-2" name="path">
+                <td id="P2-4" class="path">
 
                 </td>
 
 
-                <td id="P4-3" name="path">
+                <td id="P1-4" class="path">
 
                 </td>
 
 
-                <td id="P4-4" name="finish">
+                <td id="P0-4" class="finish">
 
                 </td>
             </tr>
