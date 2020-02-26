@@ -3,9 +3,12 @@ var minutes = 0;
 
 var secondsDisplay = document.getElementById('secondDisplay');
 var minutesDisplay = document.getElementById('minuteDisplay');
+document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+var score = 100;
 
 function incrementSeconds() {
     seconds += 1;
+    score -= 1;
     if (seconds <= 9)
     {
     secondDisplay.innerText = ": 0"+seconds;
@@ -32,26 +35,59 @@ var cancel = setInterval(incrementSeconds, 1000);
 
 var Grid = 
 [
-    [0,2,2,2,2],
-    [1,2,2,2,2],
-    [1,1,1,3,1],
-    [2,2,1,2,1], 
+    [2,2,1,1,4],
+    [2,2,3,2,1],
     [2,2,1,1,1],
+    [2,2,1,2,2], 
+    [0,1,1,2,2],
 ]
 
-var player = false;
-var path = false;
-var block = false;
-var obstacle = false;
-var invisObstacle = false;
+var player = false; // 0    
+var path = false;   //1
+var block = false;      //2
+var obstacle = false;       //3
+var finish = false;     //4
+var invisObstacle = false;      //5
 
 
-var x,y;
-x=0;
+var lives = 3;
+document.getElementById("lifeDisplay").innerHTML = "Lives: " +lives;
+
+if (lives <= 0)
+{
+    lives = 3;
+    score = 0;
+}
+var y,x;
 y=0;
-var position = "P"+x+"-"+y;
+x=4;
+var position = "P"+y+"-"+x;
 
+/*function createTable()
+{
+    var Py = 10;
+    var Px = 0;
+    var body = document.body;
+    var table = document.createElement("table");
+    
+    
+    body.appendChild(table);
+    
 
+    for (Px = 0; Px <= 25;Px++)
+    {
+        var row = document.createElement("tr");
+        table.appendChild(row);
+        for (Py = 25; Py >= 0; Py--)
+        {
+            var cell = document.createElement("td");
+            cell.id = "P"+Py+"-"+Px;
+            row.appendChild(cell);
+        }
+    }
+
+    
+}*/
 /*for (x=0; x <= 4; x++)
 {
     for(y = 0; y <= 4; y += 1)
@@ -118,19 +154,79 @@ var position = "P"+x+"-"+y;
 //var startPosition = Grid[0][0];
 
 
-function moveUp(event)
+function moveRight(event)
 {
-    var up = event.key;
-    if (up == "w")
+    var right = event.key;
+    if (right == "d")
     {
-        Grid[x][y-1] = player;
-        Grid[x][y] = path;
 
-        document.getElementById(position) == path;
-        y-=1;
-        document.getElementById(position) == player;
-        console.log(x);
-        console.log(y);
+        //Grid[x][y] = 1;
+        var next = Grid[x-1][y];
+        if (next == 1)
+        {
+            Grid[x-1][y] = 0;
+            Grid[x][y] = 1;
+
+            //document.getElementById("P"+x+"-"+y) == path;
+            x-=1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            document.getElementById("P"+[x+1]+"-"+y).style.backgroundColor = 'beige';
+
+        }
+
+        if (next == 3)
+        {
+            Grid[x][y] = 1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+            lives -= 1;
+            score -= 10;
+            y = 0;
+            x = 4;
+
+            
+
+            //document.getElementById("P"+x+"-"+y) == path;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+
+        }
+
+
+
+        console.log("x:"+x);
+        console.log("y:"+y);
+        console.log("P"+x+"-"+y);
+        console.log(Grid);
+        document.getElementById("lifeDisplay").innerHTML = "Lives: " +lives;
+        document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+    }
+}
+
+function moveLeft(event)
+{
+    var left = event.key;
+    if (left == "a")
+    {
+
+        //Grid[x][y] = 1;
+        var next = Grid[x+1][y];
+        if (next == 1)
+        {
+            Grid[x+1][y] = 0;
+            Grid[x][y] = 1;
+
+            //document.getElementById("P"+x+"-"+y) == path;
+            x+=1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            document.getElementById("P"+[x-1]+"-"+y).style.backgroundColor = 'beige';
+
+        }
+
+
+
+        console.log("x:"+x);
+        console.log("y:"+y);
+        console.log("P"+x+"-"+y);
+        console.log(Grid);
 
     }
 }
@@ -140,17 +236,57 @@ function moveDown(event)
     var down = event.key;
     if (down == "s")
     {
-        Grid[x][y+1] = player;
-        Grid[x][y] = path;
-console.log(position);
-        document.getElementById(position).name ="path";
+
+        //Grid[x][y] = 1;
+        var next = Grid[x][y+1];
+        if (next == 1)
+        {
+            Grid[x][y+1] = 0;
+            Grid[x][y] = 1;
+
+            //document.getElementById("P"+x+"-"+y) == path;
+            y+=1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            document.getElementById("P"+x+"-"+[y-1]).style.backgroundColor = 'beige';
+            
+        }
+
+
+
+        console.log("x:"+x);
+        console.log("y:"+y);
+        console.log("P"+x+"-"+y);
+        console.log(Grid);
         
-        y+=1;
-        document.getElementById(position).name ="path";
-        console.log(position);
-        
-        console.log(x);
-        console.log(y);
+    }
+}
+
+function moveUp(event)
+{
+    var up = event.key;
+    if (up == "w")
+    {
+
+        //Grid[x][y] = 1;
+        var next = Grid[x][y-1];
+        if (next == 1)
+        {
+            Grid[x][y-1] = 0;
+            Grid[x][y] = 1;
+
+            //document.getElementById("P"+x+"-"+y) == path;
+            y-=1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            document.getElementById("P"+x+"-"+[y+1]).style.backgroundColor = 'beige';
+
+        }
+
+
+
+        console.log("x:"+x);
+        console.log("y:"+y);
+        console.log("P"+x+"-"+y);
+        console.log(Grid);
 
     }
     
