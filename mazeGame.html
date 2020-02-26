@@ -11,17 +11,19 @@
     
 
     <body onkeydown="moveUp(event)" onkeypress="moveDown(event)">
-        <div>
+        <div class="head">Do you know the way maze</div>
+        <div class="time">
         <a id="minuteDisplay"></a>
         <a id="secondDisplay"></a>
         </div>
+        
         <script src="js/maze.js"></script>
 
 
         <table id ="L1">
             <tr id="y0">
                 <td id="P0-0" name="player">
-
+                    <img src="images/player.png">
                 </td>
 
 
@@ -152,6 +154,20 @@
 
 
         </table>
+
+        <div class="hkey">
+            <table class="key">
+                <thead><th colspan="2">Key</th></thead>
+                <tr>
+                    <td><img src="images/still.png"></td>
+                    <td><p>This is a standing obstacle which ran into can kill you.</p></td>
+                </tr>
+                <tr>
+                    <td><img src="images/moving.png"></td>
+                    <td><p>This is a moing obstacle which you run into can kill you.</p></td>
+                </tr>
+            </table>
+        </div>
 
     </body>
 </html>

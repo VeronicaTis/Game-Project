@@ -1,4 +1,14 @@
-body > div
+@font-face{
+    font-family: "dragon";
+    src: url("Fonts/dragon-fire.otf"); 
+    src: url("Fonts/dragon-fire.otf") format(opentype);
+}
+
+body{
+    background-image: url("../images/background.jpg");
+}
+
+body > div.time
 {
     position: relative;
     height: 50px;
@@ -12,14 +22,16 @@ body > div
     width: 125px;
 }
 
-table
+table#L1
 {
     border: black solid 15px;
     border-collapse: collapse;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 
-td
+#L1 td
 {
     width: 64px;
     height: 64px;
@@ -49,4 +61,30 @@ td[name="finish"]
 td[name="player"]
 {
     background-color: orange;
+}
+#P0-0 img{
+    width: 64px;
+    height: 64px;
+}
+
+.head{
+    color: red;
+    
+    font-size: 50px;
+    text-align:center;
+    font-family: "dragon";
+}
+.key{
+    border-collapse: collapse;
+    border: 2px solid red;
+    width: 128px;
+}
+.key  img{
+    width: 64px;
+    height: 64px;
+    
+}
+.key  td{
+    border: 2px solid red;
+    width:128px;
 }
