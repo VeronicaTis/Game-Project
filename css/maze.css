@@ -8,19 +8,7 @@ body{
     background-image: url("../images/background.jpg");
 }
 
-body > div.time
-{
-    position: relative;
-    height: 50px;
-    border-radius: 10px;
-    border: gray solid 5px;
-    background-color: black;
-    margin-bottom: 10px;
-    color: red;
-    font-size: 2em;
-    font-family: monospace;
-    width: 125px;
-}
+
 
 table#L1
 {
@@ -30,13 +18,81 @@ table#L1
     margin-left: auto;
 }
 
+table#L2
+{
+    border: rgb(61, 26, 9) solid 15px;
+    border-collapse: collapse;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+p
+{
+    text-align: center;
+    font-size: 2em;
+    font-family: 'dragon';
+    margin: 0;
+}
+div.time
+{
+    width: 150px; 
+    background-color: black;
+    color: red;
+    border: gray solid 3px;
+    border-radius: 15px;
+    font-family: monospace;
+    padding-left: 20px;
+    margin: auto;
+    height: 40px;
+}
+
+div.time > a 
+{
+    font-size: 2.5em;
+    
+}
+
+div#lifeDisplay
+{
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    border: blue 2px solid;
+    margin: auto;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    font-size: 2.75em;
+}
+
+div#scoreDisplay
+{
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    border: blue 2px solid;
+    margin: auto;
+    text-align: center;
+    width: 225px;
+    height: 50px;
+    font-size: 2.75em;
+}
 
 #L1 td
 {
     width: 64px;
     height: 64px;
     border: 2px black solid;
-    transition: 0.2s;
+    transition: 0.5s;
+    
+}
+
+#L2 td
+{
+    width: 32px;
+    height: 32px;
+    border: 2px rgb(114, 47, 8) solid;
+    transition: 0.5s;
     
 }
 
