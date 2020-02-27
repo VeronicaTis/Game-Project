@@ -1,7 +1,7 @@
 @font-face{
     font-family: "dragon";
-    src: url("Fonts/dragon-fire.otf"); 
-    src: url("Fonts/dragon-fire.otf") format(opentype);
+    src: url("Fonts/Exodus-PersonalUse-Regular.otf"); 
+    src: url("Fonts/Exodus-PersonalUse-Regular.otf") format(opentype);
 }
 
 body{
@@ -132,17 +132,33 @@ td.player
     text-align:center;
     font-family: "dragon";
 }
-.key{
+.keey{
+    width:250px;
+    background-color:white;
+    float:right;
+    z-index:1;
+    position: -webkit-sticky;
+    position: sticky;
+    top:0;
+}
+.keey table{
     border-collapse: collapse;
     border: 2px solid red;
     width: 128px;
+    height: 80px;
 }
-.key  img{
-    width: 64px;
-    height: 64px;
+
+.keey  img{
+    width: 128px;
+    height: 80px;
     
 }
-.key  td{
+.keey table tr th{
+    width: 128px;
+}
+.keey table tr td{
     border: 2px solid red;
-    width:128px;
+    width:200px;
+    height: 128px;
+    font-size: 10px;
 }
