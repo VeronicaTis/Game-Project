@@ -71,6 +71,7 @@ var block = false;      //2
 var obstacle = false;       //3
 var finish = false;     //4
 var invisObstacle = false;      //5
+//coin 6
 
 
 var lives = 3;
@@ -288,8 +289,10 @@ function moveRight(event)
 
             //document.getElementById("P"+x+"-"+y) == path;
             x-=1;
+            document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             document.getElementById("P"+[x+1]+"-"+y).style.backgroundColor = 'beige';
+            document.getElementById("P"+[x+1]+"-"+y).innerHTML = '';
             score -= 1;
             if (score < 0)
             {
@@ -342,9 +345,10 @@ function moveLeft(event)
 
             //document.getElementById("P"+x+"-"+y) == path;
             x+=1;
+            document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             document.getElementById("P"+[x-1]+"-"+y).style.backgroundColor = 'beige';
-
+            document.getElementById("P"+[x-1]+"-"+y).innerHTML = '';
         }
 
 
@@ -372,9 +376,10 @@ function moveDown(event)
 
             //document.getElementById("P"+x+"-"+y) == path;
             y+=1;
+            document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             document.getElementById("P"+x+"-"+[y-1]).style.backgroundColor = 'beige';
-            
+            document.getElementById("P"+x+"-"+[y-1]).innerHTML = '';
         }
 
 
@@ -402,9 +407,10 @@ function moveUp(event)
 
             //document.getElementById("P"+x+"-"+y) == path;
             y-=1;
+            document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             document.getElementById("P"+x+"-"+[y+1]).style.backgroundColor = 'beige';
-
+            document.getElementById("P"+x+"-"+[y+1]).innerHTML = '';
         }
 
 
