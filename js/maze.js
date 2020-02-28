@@ -7,10 +7,16 @@ var minutesDisplay = document.getElementById('minuteDisplay');
 
 var score = 0;
 document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+
+
 var T = 0;
+var coins = 0;
+
+document.getElementById("coinDisplay").innerHTML = "Coins: " +coins;
 
 function incrementSeconds() {
     seconds += T;   // adds 1 second.... per second
+    document.getElementById("coinDisplay").innerHTML = "Coins: " +coins;
     if (score > 0) //subtracts 1 from the score value every second you are in the maze game
     {
         score-= 10;
@@ -70,6 +76,11 @@ var invisObstacle = false;      //5
 var coin = false;       //6
 
 
+
+/* variables that tell if a certain level is active, to determine lives and score when the player dies */
+var L1active = false;
+var L2active = false;
+
 var lives = 3;
 document.getElementById("lifeDisplay").innerHTML = "Lives: " +lives;
 
@@ -92,7 +103,8 @@ var position = "P"+y+"-"+x;
 
 function createTable1()
 {
-    
+    L1active = true;
+    L2active = false;
     score = 1000;
     lives = 3;
     T = 1;
@@ -100,6 +112,9 @@ function createTable1()
     x = 4;
     seconds = 0;
     minutes = 0;
+    coins = 0;
+
+    document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
 
     Grid =  //level 1 grid  ... 5x5
     [
@@ -136,27 +151,26 @@ function createTable1()
             
             if(Grid[j][i] == 0)
             {
-                //<td id="name" class="path">
                 cell.className = "player";
             } 
             else if(Grid[j][i] == 2)
             {
-                //<td id="name" class="block">
                 cell.className = "block";
             }  
             else if(Grid[j][i] == 3)
             {
-                //<td id="name" class="block">
                 cell.className = "obstacle";
             }        
             else if(Grid[j][i] == 4)
             {
-                //<td id="name" class="block">
                 cell.className = "finish";
+            }  
+            else if(Grid[j][i] == 6)
+            {
+                cell.className = "coin";
             }   
             else if(Grid[j][i] == 1)
             {
-                //<td id="name" class="block">
                 cell.className = "path";
             }   
 
@@ -213,40 +227,45 @@ function createTable1()
 
 function createTable2()
 {
-    score = 2000;
+    L2active = true;
+    L1active = false;
+    score = 5000;
     lives = 5;
     T = 1;
     y = 0;
     x = 24;
     seconds = 0;
     minutes = 0;
+    coins = 0;
+
+    document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
     Grid =  //level 2 grid
     [
-        [2,2,1,1,4,2,2,2,2,2,2,2,2,2,2,1,1,1,2,2,2,2,2,2,2],   
-        [2,2,3,2,1,2,2,2,2,2,2,2,2,2,3,1,2,1,2,2,2,2,2,2,2],
-        [2,2,1,1,1,2,2,2,2,2,2,2,2,2,1,1,2,1,2,2,2,2,2,2,2],
-        [2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,1,1,2,2,2], 
-        [0,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,3,1,2,2,2],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,3,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2,2,3,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2,2,3,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,3,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [2,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [2,2,1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [2,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],    //25x25 level 2
+        [2,2,2,2,2,2,1,1,1,1,6,1,1,1,1,1,1,1,1,1,2,2,2,2,4],   
+        [2,2,6,1,1,1,1,2,2,2,2,2,2,2,3,2,2,2,2,1,1,3,1,1,1],
+        [2,2,2,2,2,2,1,2,2,2,2,2,2,3,6,3,2,2,2,2,2,2,1,2,2],
+        [1,3,2,2,2,2,1,2,2,2,2,2,2,3,1,3,2,2,2,2,2,1,1,2,2], 
+        [1,2,1,1,1,1,1,2,2,2,2,2,1,1,1,1,1,2,2,2,2,1,2,2,2],
+        [1,2,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,1,2,3,2],
+        [1,1,1,2,2,2,6,1,1,1,1,1,1,1,1,1,1,1,1,6,2,1,2,1,2],
+        [2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,1,2,1,2,1,2],
+        [2,2,1,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,2,1,2,1,2,6,2],
+        [2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,1,2,1,2,1,2,1,2],
+        [2,3,6,3,2,2,2,2,2,2,1,1,1,1,1,1,2,1,2,1,2,1,2,1,2],
+        [2,1,1,1,1,1,1,2,2,2,2,2,2,2,2,1,2,6,2,1,1,1,2,1,2],
+        [2,1,2,2,2,2,6,2,1,1,1,1,1,1,1,1,2,1,2,2,2,2,2,1,2],
+        [3,1,2,2,1,1,3,1,1,2,2,2,2,2,2,1,2,1,2,2,1,1,1,1,2],
+        [2,1,2,2,1,2,2,2,1,2,2,1,1,1,1,1,2,1,2,2,2,2,2,1,2],
+        [2,6,1,1,1,2,2,2,6,2,2,1,2,2,1,2,2,1,1,1,1,1,2,1,2],
+        [2,2,2,2,1,2,2,2,2,2,2,1,2,2,1,2,2,1,2,2,2,1,2,1,2],
+        [2,2,2,2,1,2,2,2,2,2,2,1,2,2,1,2,2,1,2,2,2,1,1,1,2],
+        [2,1,1,2,1,1,1,1,1,2,2,1,2,2,6,2,2,3,1,1,1,1,2,2,2],
+        [2,3,1,2,1,2,2,2,1,2,2,1,2,2,2,2,2,2,2,2,2,1,2,2,2],
+        [2,3,1,2,1,2,2,2,1,1,1,1,2,2,2,2,2,2,2,2,2,1,2,2,3],
+        [2,1,1,2,1,2,2,2,2,2,2,1,2,2,2,2,6,1,1,1,1,1,2,2,1],
+        [2,2,2,2,1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,1],
+        [1,1,1,1,1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,3,2,2,2,2,1],
+        [0,2,2,2,1,1,1,6,2,2,2,1,1,1,1,1,1,6,1,1,1,1,1,1,1]    //25x25 level 2
 
     ]
 
@@ -272,27 +291,27 @@ function createTable2()
             
             if(Grid[j][i] == 0)
             {
-                //<td id="name" class="path">
                 cell.className = "player";
             } 
             else if(Grid[j][i] == 2)
             {
-                //<td id="name" class="block">
+
                 cell.className = "block";
             }  
             else if(Grid[j][i] == 3)
             {
-                //<td id="name" class="block">
                 cell.className = "obstacle";
             }        
             else if(Grid[j][i] == 4)
             {
-                //<td id="name" class="block">
                 cell.className = "finish";
+            }   
+            else if(Grid[j][i] == 6)
+            {
+                cell.className = "coin";
             }   
             else if(Grid[j][i] == 1)
             {
-                //<td id="name" class="block">
                 cell.className = "path";
             }   
 
@@ -351,72 +370,6 @@ function createTable2()
 
 }
 
-//}
-
-/*for (x=0; x <= 4; x++)
-{
-    for(y = 0; y <= 4; y += 1)
-    {
-        console.log(Grid[x][y]);
-
-
-        if (Grid[x][y] == 0)
-        {   
-            player == true;
-        }
-        else 
-        {
-            player == false;
-        }
-
-        if (Grid[x][y] == 1)
-        {   
-            path == true;
-        }
-        else 
-        {
-            path == false;
-        }
-
-        if (Grid[x][y] == 2)
-        {   
-            block == true;
-        }
-        else 
-        {
-            block == false;
-        }
-
-        if (Grid[x][y] == 3)
-        {   
-            obstacle == true;
-        }
-        else 
-        {
-            obstacle == false;
-        }
-
-        if (Grid[x][y] == 4)
-        {   
-            invisObstacle == true;
-        }
-        else 
-        {
-            invisObstacle == false;
-        }
-
-
-
-    }
-}*/
-
-//var position = Grid[x][y];
-
-
-
-
-
-//var startPosition = Grid[0][0];
 
 
 function moveRight(event)
@@ -446,6 +399,26 @@ function moveRight(event)
             }
         }
 
+        if (next == 6)
+        {
+            Grid[x-1][y] = 0;
+            Grid[x][y] = 1;
+
+            //document.getElementById("P"+x+"-"+y) == path;
+            x-=1;
+            document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            document.getElementById("P"+[x+1]+"-"+y).style.backgroundColor = 'beige';
+            document.getElementById("P"+[x+1]+"-"+y).innerHTML = '';
+            score -= 1;
+            if (score < 0)
+            {
+                score = 0;
+            }
+            coins++;
+            document.getElementById("coinDisplay").innerHTML = "Coins: " +coins;
+        }
+
         if (next == 3)
         {
             Grid[x][y] = 1;
@@ -461,7 +434,6 @@ function moveRight(event)
             }
             //document.getElementById("P"+x+"-"+y) == path;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
-
         }
 
         if (next == 4)
@@ -477,14 +449,31 @@ function moveRight(event)
             }
             //document.getElementById("P"+x+"-"+y) == path;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
-            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives);
+            document.getElementById("P"+x+"-"+y).innerHTML = '';
+            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins);
+
+            if (L1active == true)
+            {
             y = 0;
             x = 4;
-            seconds = 0;
+            seconds = -1;
             minutes = 0;
-            score = 1000;
+            score = 1010;
             lives = 3;
+            coins = 0;
+            }
+            else if (L2active == true)
+            {
+                y = 0;
+                x = 24;
+                seconds = -1;
+                minutes = 0;
+                score = 5010;
+                lives = 5;
+                coins = 0;
+            }
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            
         }
 
         //   Final Position: " +[y]+ ", " +[x]   THis code does not work if coordinates are displayed to the viewer normally..
@@ -492,18 +481,32 @@ function moveRight(event)
         {
             Grid[x][y] = 1;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+            document.getElementById("P"+x+"-"+y).innerHTML = '';
 
             alert("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds");
 
-            score = 1000;
+            if (L1active == true)
+            {
             y = 0;
             x = 4;
-            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
-            seconds = 0;
+            seconds = -1;
             minutes = 0;
-            
+            score = 1010;
             lives = 3;
+            coins = 0;
+            }
+            else if (L2active == true)
+            {
+                y = 0;
+                x = 24;
+                seconds = -1;
+                minutes = 0;
+                score = 5010;
+                lives = 5;
+                coins = 0;
+            }
 
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
         }
 
         console.log("x:"+x);
@@ -533,6 +536,7 @@ function moveLeft(event)
             document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             document.getElementById("P"+[x-1]+"-"+y).style.backgroundColor = 'beige';
+            document.getElementById("P"+[x-1]+"-"+y).innerHTML = '';
             score -= 1;
             if (score < 0)
             {
@@ -560,8 +564,97 @@ function moveLeft(event)
             }*/
             //document.getElementById("P"+x+"-"+y) == path;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+        }
 
+        if (next == 4)
+        {
+            Grid[x][y] = 1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+
+            document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            if (score < 0)
+            {
+                score = 0;
+                document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            }
+            //document.getElementById("P"+x+"-"+y) == path;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+            document.getElementById("P"+x+"-"+y).innerHTML = '';
+            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins);
+            if (L1active == true)
+            {
+            y = 0;
+            x = 4;
+            seconds = -1;
+            minutes = 0;
+            score = 1010;
+            lives = 3;
+            coins = 0;
+            }
+            else if (L2active == true)
+            {
+                y = 0;
+                x = 24;
+                seconds = -1;
+                minutes = 0;
+                score = 5010;
+                lives = 5;
+                coins = 0;
+            }
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            
+        }
+
+        if (next == 6)
+        {
+            Grid[x+1][y] = 0;
+            Grid[x][y] = 1;
+
+            //document.getElementById("P"+x+"-"+y) == path;
+            x+=1;
+            document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            document.getElementById("P"+[x-1]+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+[x-1]+"-"+y).innerHTML = '';
+            score -= 1;
+            if (score < 0)
+            {
+                score = 0;
+            }
+            coins++;
+            document.getElementById("coinDisplay").innerHTML = "Coins: " +coins;
+        }
+
+        if (lives == 0)
+        {
+            Grid[x][y] = 1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+            document.getElementById("P"+x+"-"+y).innerHTML = '';
+
+            alert("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds");
+            if (L1active == true)
+            {
+            y = 0;
+            x = 4;
+            seconds = -1;
+            minutes = 0;
+            score = 1010;
+            lives = 3;
+            coins = 0;
+            }
+            else if (L2active == true)
+            {
+                y = 0;
+                x = 24;
+                seconds = -1;
+                minutes = 0;
+                score = 5010;
+                lives = 5;
+                coins = 0;
+            }
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+
+           
         }
 
 
@@ -601,6 +694,118 @@ function moveDown(event)
             document.getElementById("P"+x+"-"+[y-1]).innerHTML = '';
         }
 
+        if (next == 3)
+        {
+            Grid[x][y] = 1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+            lives -= 1;
+            score -= 100;
+
+            document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            if (score < 0)
+            {
+                score = 0;
+                document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            }
+            /*if (lives < 0)
+            {
+                lives = 0;
+                document.getElementById("lifeDisplay").innerHTML = "Lives: " +lives;
+            }*/
+            //document.getElementById("P"+x+"-"+y) == path;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+        }
+
+        if (next == 4)
+        {
+            Grid[x][y] = 1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+
+            document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            if (score < 0)
+            {
+                score = 0;
+                document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            }
+            //document.getElementById("P"+x+"-"+y) == path;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+            document.getElementById("P"+x+"-"+y).innerHTML = '';
+            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins);
+            if (L1active == true)
+            {
+            y = 0;
+            x = 4;
+            seconds = -1;
+            minutes = 0;
+            score = 1010;
+            lives = 3;
+            coins = 0;
+            }
+            else if (L2active == true)
+            {
+                y = 0;
+                x = 24;
+                seconds = -1;
+                minutes = 0;
+                score = 5010;
+                lives = 5;
+                coins = 0;
+            }
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            
+        }
+
+        if (next == 6)
+        {
+            Grid[x][y+1] = 0;
+            Grid[x][y] = 1;
+
+            //document.getElementById("P"+x+"-"+y) == path;
+            y+=1;
+            document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            document.getElementById("P"+[x]+"-"+[y-1]).style.backgroundColor = 'beige';
+            document.getElementById("P"+[x]+"-"+[y-1]).innerHTML = '';
+            score -= 1;
+            if (score < 0)
+            {
+                score = 0;
+            }
+            coins++;
+            document.getElementById("coinDisplay").innerHTML = "Coins: " +coins;
+        }
+
+        if (lives == 0)
+        {
+            Grid[x][y] = 1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+            document.getElementById("P"+x+"-"+y).innerHTML = '';
+
+            alert("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds" );
+            if (L1active == true)
+            {
+            y = 0;
+            x = 4;
+            seconds = -1;
+            minutes = 0;
+            score = 1010;
+            lives = 3;
+            coins = 0;
+            }
+            else if (L2active == true)
+            {
+                y = 0;
+                x = 24;
+                seconds = -1;
+                minutes = 0;
+                score = 5010;
+                lives = 5;
+                coins = 0;
+            }
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+
+        }
+
 
 
         console.log("x:"+x);
@@ -638,6 +843,116 @@ function moveUp(event)
             document.getElementById("P"+x+"-"+[y+1]).innerHTML = '';
         }
 
+        if (next == 3)
+        {
+            Grid[x][y] = 1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+            lives -= 1;
+            score -= 100;
+
+            document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            if (score < 0)
+            {
+                score = 0;
+                document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            }
+            /*if (lives < 0)
+            {
+                lives = 0;
+                document.getElementById("lifeDisplay").innerHTML = "Lives: " +lives;
+            }*/
+            //document.getElementById("P"+x+"-"+y) == path;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+        }
+
+        if (next == 4)
+        {
+            Grid[x][y] = 1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+
+            document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            if (score < 0)
+            {
+                score = 0;
+                document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            }
+            //document.getElementById("P"+x+"-"+y) == path;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+            document.getElementById("P"+x+"-"+y).innerHTML = '';
+            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins);
+            if (L1active == true)
+            {
+            y = 0;
+            x = 4;
+            seconds = -1;
+            minutes = 0;
+            score = 1010;
+            lives = 3;
+            coins = 0;
+            }
+            else if (L2active == true)
+            {
+                y = 0;
+                x = 24;
+                seconds = -1;
+                minutes = 0;
+                score = 5010;
+                lives = 5;
+                coins = 0;
+            }
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            
+        }
+
+        if (next == 6)
+        {
+            Grid[x][y-1] = 0;
+            Grid[x][y] = 1;
+
+            //document.getElementById("P"+x+"-"+y) == path;
+            y-=1;
+            document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            document.getElementById("P"+[x]+"-"+[y+1]).style.backgroundColor = 'beige';
+            document.getElementById("P"+[x]+"-"+[y+1]).innerHTML = '';
+            score -= 1;
+            if (score < 0)
+            {
+                score = 0;
+            }
+            coins++;
+            document.getElementById("coinDisplay").innerHTML = "Coins: " +coins;
+        }
+
+        if (lives == 0)
+        {
+            Grid[x][y] = 1;
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
+            document.getElementById("P"+x+"-"+y).innerHTML = '';
+
+            alert("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds");
+            if (L1active == true)
+            {
+            y = 0;
+            x = 4;
+            seconds = -1;
+            minutes = 0;
+            score = 1010;
+            lives = 3;
+            coins = 0;
+            }
+            else if (L2active == true)
+            {
+                y = 0;
+                x = 24;
+                seconds = -1;
+                minutes = 0;
+                score = 5010;
+                lives = 5;
+                coins = 0;
+            }
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+        }
 
 
         console.log("x:"+x);
