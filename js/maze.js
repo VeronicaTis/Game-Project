@@ -74,6 +74,8 @@ var obstacle = false;       //3
 var finish = false;     //4
 var invisObstacle = false;      //5
 var coin = false;       //6
+var movingObstacle = false;     //7
+var invisPath = false;      //8
 
 
 
@@ -120,9 +122,9 @@ function createTable1()
     [
         [2,2,1,1,4],   
         [2,2,3,2,1],
-        [2,2,1,1,1],
-        [2,2,1,2,2], 
-        [0,1,1,2,2],
+        [6,1,1,1,1],
+        [2,2,1,2,1], 
+        [0,1,1,2,6],
 
 
     ]
@@ -160,14 +162,22 @@ function createTable1()
             else if(Grid[j][i] == 3)
             {
                 cell.className = "obstacle";
+                cell.innerHTML = "<img src='images/still.png' style='width: 96%; height: 96%; margin: auto;'>"
             }        
             else if(Grid[j][i] == 4)
             {
                 cell.className = "finish";
+                cell.innerHTML = "<img src='images/Finish.png' style='width: 96%; height: 96%; margin: auto;'>"
+            }  
+            else if(Grid[j][i] == 8)
+            {
+                cell.className = "invisPath";
             }  
             else if(Grid[j][i] == 6)
             {
                 cell.className = "coin";
+                cell.innerHTML = "<img src='images/coin.gif' style='width: 96%; height: 96%; margin: auto;'>"
+                
             }   
             else if(Grid[j][i] == 1)
             {
@@ -243,28 +253,28 @@ function createTable2()
     [
         [2,2,2,2,2,2,1,1,1,1,6,1,1,1,1,1,1,1,1,1,2,2,2,2,4],   
         [2,2,6,1,1,1,1,2,2,2,2,2,2,2,3,2,2,2,2,1,1,3,1,1,1],
-        [2,2,2,2,2,2,1,2,2,2,2,2,2,3,6,3,2,2,2,2,2,2,1,2,2],
-        [1,3,2,2,2,2,1,2,2,2,2,2,2,3,1,3,2,2,2,2,2,1,1,2,2], 
-        [1,2,1,1,1,1,1,2,2,2,2,2,1,1,1,1,1,2,2,2,2,1,2,2,2],
-        [1,2,1,2,2,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,1,2,3,2],
+        [2,2,2,2,2,2,1,2,2,6,2,2,2,3,6,3,2,2,2,2,2,2,1,2,2],
+        [1,3,2,2,2,2,1,2,2,1,2,2,2,3,1,3,2,2,2,1,6,1,1,2,2], 
+        [1,2,1,1,1,1,1,2,2,1,2,2,1,1,1,1,1,2,2,1,2,1,2,2,2],
+        [1,2,1,2,2,2,2,2,2,1,2,2,1,2,2,2,2,2,2,1,2,1,2,3,2],
         [1,1,1,2,2,2,6,1,1,1,1,1,1,1,1,1,1,1,1,6,2,1,2,1,2],
         [2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,1,2,1,2,1,2],
-        [2,2,1,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,2,1,2,1,2,6,2],
-        [2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,1,2,1,2,1,2,1,2],
-        [2,3,6,3,2,2,2,2,2,2,1,1,1,1,1,1,2,1,2,1,2,1,2,1,2],
-        [2,1,1,1,1,1,1,2,2,2,2,2,2,2,2,1,2,6,2,1,1,1,2,1,2],
+        [2,2,1,2,2,2,1,1,2,2,1,1,1,1,1,1,1,1,2,1,2,1,2,6,2],
+        [2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,2,2,1,2,1,2,1,2,1,2],
+        [2,3,6,3,2,2,1,2,1,1,1,1,1,1,1,1,2,1,2,1,2,1,2,1,2],
+        [2,1,1,1,1,1,1,2,2,2,2,2,2,2,2,1,2,1,2,1,1,1,2,1,2],
         [2,1,2,2,2,2,6,2,1,1,1,1,1,1,1,1,2,1,2,2,2,2,2,1,2],
         [3,1,2,2,1,1,3,1,1,2,2,2,2,2,2,1,2,1,2,2,1,1,1,1,2],
         [2,1,2,2,1,2,2,2,1,2,2,1,1,1,1,1,2,1,2,2,2,2,2,1,2],
         [2,6,1,1,1,2,2,2,6,2,2,1,2,2,1,2,2,1,1,1,1,1,2,1,2],
-        [2,2,2,2,1,2,2,2,2,2,2,1,2,2,1,2,2,1,2,2,2,1,2,1,2],
+        [2,2,1,2,1,2,2,2,2,2,2,1,2,2,1,2,2,1,2,2,2,1,2,1,2],
         [2,2,2,2,1,2,2,2,2,2,2,1,2,2,1,2,2,1,2,2,2,1,1,1,2],
-        [2,1,1,2,1,1,1,1,1,2,2,1,2,2,6,2,2,3,1,1,1,1,2,2,2],
-        [2,3,1,2,1,2,2,2,1,2,2,1,2,2,2,2,2,2,2,2,2,1,2,2,2],
-        [2,3,1,2,1,2,2,2,1,1,1,1,2,2,2,2,2,2,2,2,2,1,2,2,3],
-        [2,1,1,2,1,2,2,2,2,2,2,1,2,2,2,2,6,1,1,1,1,1,2,2,1],
-        [2,2,2,2,1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,1],
-        [1,1,1,1,1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,3,2,2,2,2,1],
+        [2,1,1,2,1,1,1,1,1,2,2,1,2,1,1,2,2,3,1,1,1,1,2,2,2],
+        [2,3,1,2,1,2,3,2,1,2,2,1,2,1,2,2,2,2,2,2,2,1,2,2,2],
+        [2,3,1,8,1,2,6,2,1,1,1,1,2,6,2,2,2,2,2,2,2,1,2,2,3],
+        [2,6,1,2,1,2,1,2,2,2,2,1,2,2,2,2,6,1,1,1,1,1,2,2,1],
+        [2,2,2,2,1,3,1,1,1,1,1,1,2,2,1,2,2,2,2,1,2,2,2,2,1],
+        [1,1,1,1,1,2,2,2,2,2,2,1,2,2,1,2,2,2,2,3,2,2,2,2,1],
         [0,2,2,2,1,1,1,6,2,2,2,1,1,1,1,1,1,6,1,1,1,1,1,1,1]    //25x25 level 2
 
     ]
@@ -301,14 +311,21 @@ function createTable2()
             else if(Grid[j][i] == 3)
             {
                 cell.className = "obstacle";
+                cell.innerHTML = "<img src='images/still.png' style='width: 96%; height: 96%; margin: auto;'>"
             }        
             else if(Grid[j][i] == 4)
             {
                 cell.className = "finish";
+                cell.innerHTML = "<img src='images/Finish.png' style='width: 96%; height: 96%; margin: auto;'>"
             }   
+            else if(Grid[j][i] == 8)
+            {
+                cell.className = "invisPath";
+            }  
             else if(Grid[j][i] == 6)
             {
                 cell.className = "coin";
+                cell.innerHTML = "<img src='images/coin.gif' style='width: 96%; height: 96%; margin: auto;'>"
             }   
             else if(Grid[j][i] == 1)
             {
@@ -410,7 +427,7 @@ function moveRight(event)
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             document.getElementById("P"+[x+1]+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+[x+1]+"-"+y).innerHTML = '';
-            score -= 1;
+            score += 25;
             if (score < 0)
             {
                 score = 0;
@@ -450,10 +467,10 @@ function moveRight(event)
             //document.getElementById("P"+x+"-"+y) == path;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+x+"-"+y).innerHTML = '';
-            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins);
-
             if (L1active == true)
             {
+            document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
             y = 0;
             x = 4;
             seconds = -1;
@@ -464,6 +481,8 @@ function moveRight(event)
             }
             else if (L2active == true)
             {
+                document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+                alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
                 y = 0;
                 x = 24;
                 seconds = -1;
@@ -580,9 +599,10 @@ function moveLeft(event)
             //document.getElementById("P"+x+"-"+y) == path;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+x+"-"+y).innerHTML = '';
-            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins);
             if (L1active == true)
             {
+            document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
             y = 0;
             x = 4;
             seconds = -1;
@@ -593,6 +613,8 @@ function moveLeft(event)
             }
             else if (L2active == true)
             {
+                document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+                alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
                 y = 0;
                 x = 24;
                 seconds = -1;
@@ -616,7 +638,7 @@ function moveLeft(event)
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             document.getElementById("P"+[x-1]+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+[x-1]+"-"+y).innerHTML = '';
-            score -= 1;
+            score += 25;
             if (score < 0)
             {
                 score = 0;
@@ -730,9 +752,10 @@ function moveDown(event)
             //document.getElementById("P"+x+"-"+y) == path;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+x+"-"+y).innerHTML = '';
-            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins);
             if (L1active == true)
             {
+            document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
             y = 0;
             x = 4;
             seconds = -1;
@@ -743,6 +766,8 @@ function moveDown(event)
             }
             else if (L2active == true)
             {
+                document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+                alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
                 y = 0;
                 x = 24;
                 seconds = -1;
@@ -766,7 +791,7 @@ function moveDown(event)
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             document.getElementById("P"+[x]+"-"+[y-1]).style.backgroundColor = 'beige';
             document.getElementById("P"+[x]+"-"+[y-1]).innerHTML = '';
-            score -= 1;
+            score += 25;
             if (score < 0)
             {
                 score = 0;
@@ -843,6 +868,24 @@ function moveUp(event)
             document.getElementById("P"+x+"-"+[y+1]).innerHTML = '';
         }
 
+        if (next == 8)
+        {
+            Grid[x][y-1] = 0;
+            Grid[x][y] = 1;
+
+            //document.getElementById("P"+x+"-"+y) == path;
+            y-=1;
+            document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
+            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
+            document.getElementById("P"+x+"-"+[y+1]).style.backgroundColor = 'beige';
+            score -= 1;
+            if (score < 0)
+            {
+                score = 0;
+            }
+            document.getElementById("P"+x+"-"+[y+1]).innerHTML = '';
+        }
+
         if (next == 3)
         {
             Grid[x][y] = 1;
@@ -879,9 +922,11 @@ function moveUp(event)
             //document.getElementById("P"+x+"-"+y) == path;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+x+"-"+y).innerHTML = '';
-            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins);
+            
             if (L1active == true)
             {
+            document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
             y = 0;
             x = 4;
             seconds = -1;
@@ -892,6 +937,8 @@ function moveUp(event)
             }
             else if (L2active == true)
             {
+                document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
+                alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
                 y = 0;
                 x = 24;
                 seconds = -1;
@@ -915,7 +962,7 @@ function moveUp(event)
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             document.getElementById("P"+[x]+"-"+[y+1]).style.backgroundColor = 'beige';
             document.getElementById("P"+[x]+"-"+[y+1]).innerHTML = '';
-            score -= 1;
+            score += 25;
             if (score < 0)
             {
                 score = 0;

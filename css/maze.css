@@ -111,6 +111,7 @@ div#coinDisplay
     height: 64px;
     border: 2px black solid;
     transition: 0.5s;
+    box-shadow: black 0px 0px 10px 1px inset;
     
 }
 
@@ -131,6 +132,7 @@ td.block
 td.path
 {
     background-color: beige;
+    
 }
 
 td.obstacle
@@ -148,9 +150,35 @@ td.player
     background-color: orange;
 }
 
+td.invisObstacle
+{
+    background-color: beige;
+    transition: 0.2s;
+}
+
+td.invisObstacle:hover
+{
+    background-color: red;
+    transition: 0.2s;
+}
+
+td.invisPath
+{
+    background-color: black;
+    transition: 0.25s;
+}
+
+td.invisPath:hover
+{
+    background-color: beige;
+    transition: 0.25s;
+}
+
 td.coin
 {
     background-color: rgb(235, 255, 59);
+    margin: 0px;
+    padding: 0px;
 
 }
 
