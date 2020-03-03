@@ -116,6 +116,15 @@ function createTable1()
     minutes = 0;
     coins = 0;
 
+    if (L1active == true)
+    {
+        document.getElementById("L1BUTTON").style = "display: none;";
+    }
+    if (L2active == false)
+    {
+        document.getElementById("L2BUTTON").style = "display: block;";
+    }
+
     document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
 
     Grid =  //level 1 grid  ... 5x5
@@ -169,10 +178,22 @@ function createTable1()
                 cell.className = "finish";
                 cell.innerHTML = "<img src='images/Finish.png' style='width: 96%; height: 96%; margin: auto;'>"
             }  
+            else if(Grid[j][i] == 7)
+            {
+                cell.className = "movingObstacle";
+                cell.innerHTML = "<img src='images/moving.png' style='width: 96%; height: 96%; margin: auto;'>"
+
+            }    
+            else if(Grid[j][i] == 5)
+            {
+                cell.className = "invisObstacle";
+                cell.innerHTML = "<img src='images/still.png' style='width: 96%; height: 96%; margin: auto;'>"
+            }  
             else if(Grid[j][i] == 8)
             {
                 cell.className = "invisPath";
             }  
+
             else if(Grid[j][i] == 6)
             {
                 cell.className = "coin";
@@ -248,32 +269,41 @@ function createTable2()
     minutes = 0;
     coins = 0;
 
+    if (L2active == true)
+    {
+        document.getElementById("L2BUTTON").style = "display: none;";
+    }
+    if (L1active == false)
+    {
+        document.getElementById("L1BUTTON").style = "display: block;";
+    }
+
     document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
     Grid =  //level 2 grid
     [
-        [2,2,2,2,2,2,1,1,1,1,6,1,1,1,1,1,1,1,1,1,2,2,2,2,4],   
-        [2,2,6,1,1,1,1,2,2,2,2,2,2,2,3,2,2,2,2,1,1,3,1,1,1],
-        [2,2,2,2,2,2,1,2,2,6,2,2,2,3,6,3,2,2,2,2,2,2,1,2,2],
-        [1,3,2,2,2,2,1,2,2,1,2,2,2,3,1,3,2,2,2,1,6,1,1,2,2], 
+        [2,2,2,2,2,7,1,1,1,1,6,1,1,1,1,1,1,1,1,1,2,2,2,2,4],   
+        [2,2,6,1,1,1,1,2,2,2,2,2,2,2,5,2,2,2,2,1,1,3,1,1,1],
+        [2,2,2,2,2,2,1,2,2,6,2,2,2,5,6,5,2,2,2,2,2,2,1,2,2],
+        [1,3,2,2,2,2,1,2,2,1,2,2,2,5,1,5,2,2,2,1,6,1,1,2,2], 
         [1,2,1,1,1,1,1,2,2,1,2,2,1,1,1,1,1,2,2,1,2,1,2,2,2],
-        [1,2,1,2,2,2,2,2,2,1,2,2,1,2,2,2,2,2,2,1,2,1,2,3,2],
-        [1,1,1,2,2,2,6,1,1,1,1,1,1,1,1,1,1,1,1,6,2,1,2,1,2],
-        [2,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,1,2,1,2,1,2],
-        [2,2,1,2,2,2,1,1,2,2,1,1,1,1,1,1,1,1,2,1,2,1,2,6,2],
-        [2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,2,2,1,2,1,2,1,2,1,2],
+        [1,2,1,2,1,2,2,2,2,1,2,2,1,2,2,2,2,2,2,1,2,1,2,3,2],
+        [1,1,1,2,1,2,6,1,1,1,1,1,1,1,1,1,1,1,1,6,2,1,2,1,2],
+        [2,2,1,2,1,2,2,2,2,2,1,2,2,2,2,2,2,2,2,1,2,1,2,1,2],
+        [2,2,1,2,1,2,1,1,2,2,1,1,1,1,1,1,1,1,2,1,2,1,2,6,2],
+        [2,2,1,2,2,2,1,2,2,2,1,2,2,2,2,2,2,1,8,1,2,1,2,1,2],
         [2,3,6,3,2,2,1,2,1,1,1,1,1,1,1,1,2,1,2,1,2,1,2,1,2],
         [2,1,1,1,1,1,1,2,2,2,2,2,2,2,2,1,2,1,2,1,1,1,2,1,2],
         [2,1,2,2,2,2,6,2,1,1,1,1,1,1,1,1,2,1,2,2,2,2,2,1,2],
-        [3,1,2,2,1,1,3,1,1,2,2,2,2,2,2,1,2,1,2,2,1,1,1,1,2],
-        [2,1,2,2,1,2,2,2,1,2,2,1,1,1,1,1,2,1,2,2,2,2,2,1,2],
-        [2,6,1,1,1,2,2,2,6,2,2,1,2,2,1,2,2,1,1,1,1,1,2,1,2],
-        [2,2,1,2,1,2,2,2,2,2,2,1,2,2,1,2,2,1,2,2,2,1,2,1,2],
-        [2,2,2,2,1,2,2,2,2,2,2,1,2,2,1,2,2,1,2,2,2,1,1,1,2],
-        [2,1,1,2,1,1,1,1,1,2,2,1,2,1,1,2,2,3,1,1,1,1,2,2,2],
+        [3,1,2,2,1,1,5,1,1,2,2,2,2,2,2,1,2,1,2,2,1,1,1,1,2],
+        [2,1,2,2,1,2,1,2,1,2,2,1,1,1,1,1,2,1,2,2,2,2,2,1,2],
+        [2,6,1,1,1,2,1,2,6,2,2,1,2,2,1,2,2,1,1,1,1,1,2,1,2],
+        [2,2,1,2,1,2,1,2,2,2,2,1,2,2,1,2,2,1,2,2,2,1,2,1,2],
+        [2,2,2,2,1,2,1,2,2,2,2,1,2,2,1,2,2,1,2,2,2,1,1,1,2],
+        [2,1,1,2,1,1,1,1,1,2,2,1,2,1,1,2,2,5,1,1,1,1,2,2,2],
         [2,3,1,2,1,2,3,2,1,2,2,1,2,1,2,2,2,2,2,2,2,1,2,2,2],
         [2,3,1,8,1,2,6,2,1,1,1,1,2,6,2,2,2,2,2,2,2,1,2,2,3],
         [2,6,1,2,1,2,1,2,2,2,2,1,2,2,2,2,6,1,1,1,1,1,2,2,1],
-        [2,2,2,2,1,3,1,1,1,1,1,1,2,2,1,2,2,2,2,1,2,2,2,2,1],
+        [2,2,2,2,1,3,1,1,1,1,1,1,2,2,1,2,2,2,2,1,2,8,8,8,1],
         [1,1,1,1,1,2,2,2,2,2,2,1,2,2,1,2,2,2,2,3,2,2,2,2,1],
         [0,2,2,2,1,1,1,6,2,2,2,1,1,1,1,1,1,6,1,1,1,1,1,1,1]    //25x25 level 2
 
@@ -318,6 +348,17 @@ function createTable2()
                 cell.className = "finish";
                 cell.innerHTML = "<img src='images/Finish.png' style='width: 96%; height: 96%; margin: auto;'>"
             }   
+            else if(Grid[j][i] == 7)
+            {
+                cell.className = "movingObstacle";
+                cell.innerHTML = "<img src='images/moving.png' style='width: 96%; height: 96%; margin: auto;'>"
+
+            }    
+            else if(Grid[j][i] == 5)
+            {
+                cell.className = "invisObstacle";
+                cell.innerHTML = "<img src='images/still.png' style='width: 96%; height: 96%; margin: auto;'>"
+            } 
             else if(Grid[j][i] == 8)
             {
                 cell.className = "invisPath";
@@ -385,7 +426,9 @@ function createTable2()
     //tableExist2 = true;
     //tableExist1 = false;
 
+
 }
+
 
 
 
@@ -398,7 +441,7 @@ function moveRight(event)
 
         //Grid[x][y] = 1;
         var next = Grid[x-1][y];
-        if (next == 1)
+        if (next == 1 || next == 8)
         {
             Grid[x-1][y] = 0;
             Grid[x][y] = 1;
@@ -436,7 +479,7 @@ function moveRight(event)
             document.getElementById("coinDisplay").innerHTML = "Coins: " +coins;
         }
 
-        if (next == 3)
+        if (next == 3 || next == 5 || next == 7)
         {
             Grid[x][y] = 1;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
@@ -545,7 +588,7 @@ function moveLeft(event)
 
         //Grid[x][y] = 1;
         var next = Grid[x+1][y];
-        if (next == 1)
+        if (next == 1 || next == 8)
         {
             Grid[x+1][y] = 0;
             Grid[x][y] = 1;
@@ -563,7 +606,7 @@ function moveLeft(event)
             }
         }
 
-        if (next == 3)
+        if (next == 3 || next == 5 || next == 7)
         {
             Grid[x][y] = 1;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
@@ -698,7 +741,7 @@ function moveDown(event)
 
         //Grid[x][y] = 1;
         var next = Grid[x][y+1];
-        if (next == 1)
+        if (next == 1  || next == 8)
         {
             Grid[x][y+1] = 0;
             Grid[x][y] = 1;
@@ -716,7 +759,7 @@ function moveDown(event)
             document.getElementById("P"+x+"-"+[y-1]).innerHTML = '';
         }
 
-        if (next == 3)
+        if (next == 3 || next == 5 || next == 7)
         {
             Grid[x][y] = 1;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
@@ -850,7 +893,7 @@ function moveUp(event)
 
         //Grid[x][y] = 1;
         var next = Grid[x][y-1];
-        if (next == 1)
+        if (next == 1 || next == 8)
         {
             Grid[x][y-1] = 0;
             Grid[x][y] = 1;
@@ -868,25 +911,7 @@ function moveUp(event)
             document.getElementById("P"+x+"-"+[y+1]).innerHTML = '';
         }
 
-        if (next == 8)
-        {
-            Grid[x][y-1] = 0;
-            Grid[x][y] = 1;
-
-            //document.getElementById("P"+x+"-"+y) == path;
-            y-=1;
-            document.getElementById("P"+x+"-"+y).innerHTML = "<img src='images/splayer.png' style='width:100%'>"
-            document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
-            document.getElementById("P"+x+"-"+[y+1]).style.backgroundColor = 'beige';
-            score -= 1;
-            if (score < 0)
-            {
-                score = 0;
-            }
-            document.getElementById("P"+x+"-"+[y+1]).innerHTML = '';
-        }
-
-        if (next == 3)
+        if (next == 3 || next == 5 || next == 7)
         {
             Grid[x][y] = 1;
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
