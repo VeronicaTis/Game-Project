@@ -10,7 +10,7 @@
     </head>
     
 
-    <body onkeydown="moveUp(event),moveDown(event),moveRight(event),moveLeft(event)">
+    <body onkeydown="moveUp(event),moveDown(event),moveRight(event),moveLeft(event),moveObstacle()">
         <div class="head">
             Do you know the way maze
         </div>
@@ -33,7 +33,7 @@
         <button onclick="createTable2()" id="L2BUTTON" style='display: block;'>Level 2</button>
         <button onclick="createTable3()" id="L3BUTTON" style='display: block;'>Level 3</button>
         
-        <script src="js/maze.js"></script>
+        
 
 
         <!--Table Row setup, and columns-->
@@ -191,5 +191,6 @@
         <div id="whens">
 
         </div>
+        <script src="js/maze.js"></script>
     </body>
 </html>

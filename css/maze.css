@@ -26,6 +26,14 @@ table#L2
     margin-left: auto;
 }
 
+table#L3
+{
+    border: rgb(0, 0, 0) solid 15px;
+    border-collapse: collapse;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 p
 {
     text-align: center;
@@ -126,9 +134,9 @@ div#coinDisplay
 
 #L3 td
 {
-    width: 16px;
-    height: 16px;
-    border: 2px rgb(0, 0, 0) solid;
+    width: 14px;
+    height: 14px;
+    border: 1px rgb(0, 0, 0) solid;
     transition: 0.1s;
     
 }
