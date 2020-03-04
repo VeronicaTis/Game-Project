@@ -105,6 +105,7 @@ var position = "P"+y+"-"+x;
 
 function createTable1()
 {
+    document.getElementById("whens").style.display = "none";
     L1active = true;
     L2active = false;
     score = 1000;
@@ -258,6 +259,7 @@ function createTable1()
 
 function createTable2()
 {
+    document.getElementById("whens").style.display = "none";
     L2active = true;
     L1active = false;
     score = 5000;
@@ -513,7 +515,7 @@ function moveRight(event)
             if (L1active == true)
             {
             document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
-            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
+            document.getElementById("whens").innerHTML = ("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
             y = 0;
             x = 4;
             seconds = -1;
@@ -521,11 +523,15 @@ function moveRight(event)
             score = 1010;
             lives = 3;
             coins = 0;
+            document.getElementById("whens").style.backgroundColor = 'rgba(26, 155, 65, 0.486)';
+            document.getElementById("whens").style.transform = "scale(2)";
+            document.getElementById("whens").style.transition = "2s";
+            document.getElementById("whens").style.display = "block";
             }
             else if (L2active == true)
             {
                 document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
-                alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
+                document.getElementById("whens").innerHTML = ("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
                 y = 0;
                 x = 24;
                 seconds = -1;
@@ -533,6 +539,10 @@ function moveRight(event)
                 score = 5010;
                 lives = 5;
                 coins = 0;
+                document.getElementById("whens").style.backgroundColor = 'rgba(26, 155, 65, 0.486)';
+                document.getElementById("whens").style.transform = "scale(2)";
+                document.getElementById("whens").style.transition = "all 3s";
+                document.getElementById("whens").style.display = "block";
             }
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             
@@ -545,7 +555,8 @@ function moveRight(event)
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+x+"-"+y).innerHTML = '';
 
-            alert("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds");
+            document.getElementById("whens").innerHTML = ("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds");
+            document.getElementById("whens").style.backgroundColor = 
 
             if (L1active == true)
             {
@@ -630,7 +641,7 @@ function moveLeft(event)
 
         if (next == 4)
         {
-            Grid[x][y] = 1;
+            Grid[x][y] = 1
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
 
             document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
