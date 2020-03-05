@@ -1,4 +1,12 @@
 <!doctype HTML>
+
+<!-- PROJECT CREATED BY 
+
+ Luke Dujmic
+
+ Veronica Tisdel
+
+ -->
 <html>
     <head>
         <title>MAZE GAME</title>
@@ -9,8 +17,8 @@
         
     </head>
     
-
-    <body onkeydown="moveUp(event),moveDown(event),moveRight(event),moveLeft(event),moveObstacle()">
+    <!--moveUp(event),moveDown(event),moveRight(event),moveLeft(event)-->
+    <body onkeydown="move(event)">
         <div class="head">
             Do you know the way maze
         </div>
@@ -33,6 +41,9 @@
         <button onclick="createTable2()" id="L2BUTTON" style='display: block;'>Level 2</button>
         <button onclick="createTable3()" id="L3BUTTON" style='display: block;'>Level 3</button>
         
+        <div id="whens">
+            
+        </div>
         
 
 
@@ -174,23 +185,34 @@
             <table>
                 <tr><th colspan="2">Key</th></tr>
                 <tr>
+                    <td style="font-size: 1.7em;">!!!</td>
+                    <td><p>To reset the level, click on a different level and go back!</p></td>
+                </tr>
+                <tr>
                     <td><img src="images/still.png"></td>
-                    <td><p>This is a standing obstacle which ran into can kill you.</p></td>
+                    <td><p>This is a standing obstacle.  It will take a life away if you run into it.  These can be invisible, hover over them to reveal.</p></td>
                 </tr>
                 <tr>
                     <td><img src="images/moving.png"></td>
-                    <td><p>This is a moing obstacle which you run into can kill you.</p></td>
+                    <td><p>This is a moving obstacle.  It will also take a life away, but it moves.</p></td>
                 </tr>
                 <tr>
                     <td><img src="images/coin.gif"></td>
-                    <td><p>Collect coins to earn 25 points</p></td>
+                    <td><p>Collect coins to earn 25 points.  Try and get them all!</p></td>
+                </tr>
+                <tr>
+                    <td><img src="images/Finish.png"></td>
+                    <td><p>This is the finish line.  Reach this point to complete the maze.</p></td>
+                </tr>
+
+                <tr>
+                    <td style="font-size: 1.7em;">Score Mechanics</td>
+                    <td><p>You lose 10 points every second. You lose one point for moving one spot. You lose 100 points for getting hit by an obstacle. You gain 25 points for touching a coin.</p></td>
                 </tr>
             </table>
         </div>
 
-        <div id="whens">
 
-        </div>
         <script src="js/maze.js"></script>
     </body>
 </html>

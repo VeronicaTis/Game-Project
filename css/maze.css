@@ -1,3 +1,11 @@
+/* PROJECT CREATED BY 
+
+ Luke Dujmic
+
+ Veronica Tisdel
+
+ */
+
 @font-face{
     font-family: "dragon";
     src: url("Fonts/Exodus-PersonalUse-Regular.otf"); 
@@ -14,6 +22,7 @@ table#L1
 {
     border: black solid 15px;
     border-collapse: collapse;
+
     margin-right: auto;
     margin-left: auto;
 }
@@ -119,8 +128,7 @@ div#coinDisplay
     height: 64px;
     border: 2px black solid;
     transition: 0.5s;
-    box-shadow: black 0px 0px 10px 1px inset;
-    
+    border: inherit;
 }
 
 #L2 td
@@ -129,6 +137,7 @@ div#coinDisplay
     height: 32px;
     border: 2px rgb(114, 47, 8) solid;
     transition: 0.1s;
+    border: inherit;
     
 }
 
@@ -138,7 +147,7 @@ div#coinDisplay
     height: 14px;
     border: 1px rgb(0, 0, 0) solid;
     transition: 0.1s;
-    
+    border: inherit;
 }
 
 td.block
@@ -182,6 +191,7 @@ td.movingObstacle
     background-color: rgb(82, 137, 255);
     transition: 0.2s;
 }
+
 td.invisObstacle:hover
 {
     background-color: red;
@@ -262,17 +272,18 @@ button#L3BUTTON
     font-family: "dragon";
 }
 .keey{
-    width:250px;
+    width:260px;
     background-color:white;
     z-index:1;
-    position: -webkit-fixed;
-    position: fixed;
-    right: 0;
+    position: -webkit-absolute;
+    position: absolute;
+    right: 3px;
+
 }
 .keey table{
     border-collapse: collapse;
     border: 2px solid red;
-    width: 128px;
+    width: 132px;
     height: 80px;
 }
 
@@ -289,6 +300,7 @@ button#L3BUTTON
     width:200px;
     height: 128px;
     font-size: 10px;
+    
 }
                           
 
@@ -298,6 +310,9 @@ button#L3BUTTON
     position: relative;
     left: 30%;
     top: 50%;
-   
-    
+    transition: all 3s ease-in;
+    display: block;
+    border: black solid 5px;
+    border-radius: 10px;
+    opacity: 0;
 }
