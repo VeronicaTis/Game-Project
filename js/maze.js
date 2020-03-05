@@ -556,7 +556,7 @@ function moveRight(event)
             document.getElementById("P"+x+"-"+y).innerHTML = '';
 
             document.getElementById("whens").innerHTML = ("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds");
-            document.getElementById("whens").style.backgroundColor = 
+            document.getElementById("whens").style.backgroundColor = 'rgba(199, 7, 7, 0.473)';
             document.getElementById("whens").style.transform = "scale(2)";
             document.getElementById("whens").style.transition = "all 3s";
             document.getElementById("whens").style.display = "block";
@@ -659,7 +659,7 @@ function moveLeft(event)
             if (L1active == true)
             {
             document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
-            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
+            document.getElementById("whens").innerHTML = ("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
             y = 0;
             x = 4;
             seconds = -1;
@@ -667,11 +667,15 @@ function moveLeft(event)
             score = 1010;
             lives = 3;
             coins = 0;
+            document.getElementById("whens").style.backgroundColor = 'rgba(26, 155, 65, 0.486)';
+                document.getElementById("whens").style.transform = "scale(2)";
+                document.getElementById("whens").style.transition = "all 3s";
+                document.getElementById("whens").style.display = "block";
             }
             else if (L2active == true)
             {
                 document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
-                alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
+                document.getElementById("whens").innerHTML = ("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
                 y = 0;
                 x = 24;
                 seconds = -1;
@@ -679,6 +683,10 @@ function moveLeft(event)
                 score = 5010;
                 lives = 5;
                 coins = 0;
+                document.getElementById("whens").style.backgroundColor = 'rgba(26, 155, 65, 0.486)';
+                document.getElementById("whens").style.transform = "scale(2)";
+                document.getElementById("whens").style.transition = "all 3s";
+                document.getElementById("whens").style.display = "block";
             }
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             
@@ -710,7 +718,11 @@ function moveLeft(event)
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+x+"-"+y).innerHTML = '';
 
-            alert("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds");
+            document.getElementById("whens").innerHTML = ("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds");
+            document.getElementById("whens").style.backgroundColor = 'rgba(199, 7, 7, 0.473)';
+            document.getElementById("whens").style.transform = "scale(2)";
+            document.getElementById("whens").style.transition = "all 3s";
+            document.getElementById("whens").style.display = "block";
             if (L1active == true)
             {
             y = 0;
@@ -812,7 +824,7 @@ function moveDown(event)
             if (L1active == true)
             {
             document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
-            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
+            document.getElementById("whens").innerHTML = ("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
             y = 0;
             x = 4;
             seconds = -1;
@@ -820,11 +832,15 @@ function moveDown(event)
             score = 1010;
             lives = 3;
             coins = 0;
+            document.getElementById("whens").style.backgroundColor = 'rgba(26, 155, 65, 0.486)';
+                document.getElementById("whens").style.transform = "scale(2)";
+                document.getElementById("whens").style.transition = "all 3s";
+                document.getElementById("whens").style.display = "block";
             }
             else if (L2active == true)
             {
                 document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
-                alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
+                document.getElementById("whens").innerHTML = ("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
                 y = 0;
                 x = 24;
                 seconds = -1;
@@ -832,6 +848,10 @@ function moveDown(event)
                 score = 5010;
                 lives = 5;
                 coins = 0;
+                document.getElementById("whens").style.backgroundColor = 'rgba(26, 155, 65, 0.486)';
+                document.getElementById("whens").style.transform = "scale(2)";
+                document.getElementById("whens").style.transition = "all 3s";
+                document.getElementById("whens").style.display = "block";
             }
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             
@@ -863,7 +883,11 @@ function moveDown(event)
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+x+"-"+y).innerHTML = '';
 
-            alert("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds" );
+            document.getElementById("whens").innerHTML = ("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds" );
+            document.getElementById("whens").style.backgroundColor = 'rgba(199, 7, 7, 0.473)';
+            document.getElementById("whens").style.transform = "scale(2)";
+            document.getElementById("whens").style.transition = "all 3s";
+            document.getElementById("whens").style.display = "block";
             if (L1active == true)
             {
             y = 0;
@@ -965,7 +989,7 @@ function moveUp(event)
             if (L1active == true)
             {
             document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
-            alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
+            document.getElementById("whens").innerHTML = ("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/2');
             y = 0;
             x = 4;
             seconds = -1;
@@ -973,11 +997,15 @@ function moveUp(event)
             score = 1010;
             lives = 3;
             coins = 0;
+            document.getElementById("whens").style.backgroundColor = 'rgba(26, 155, 65, 0.486)';
+                document.getElementById("whens").style.transform = "scale(2)";
+                document.getElementById("whens").style.transition = "all 3s";
+                document.getElementById("whens").style.display = "block";
             }
             else if (L2active == true)
             {
                 document.getElementById("scoreDisplay").innerHTML = "Score: " +score;
-                alert("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
+                document.getElementById("whens").innerHTML = ("YOU WIN!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds   Lives Left: " +lives+ "     Coins Collected: " +coins+ '/15');
                 y = 0;
                 x = 24;
                 seconds = -1;
@@ -985,6 +1013,10 @@ function moveUp(event)
                 score = 5010;
                 lives = 5;
                 coins = 0;
+                document.getElementById("whens").style.backgroundColor = 'rgba(26, 155, 65, 0.486)';
+                document.getElementById("whens").style.transform = "scale(2)";
+                document.getElementById("whens").style.transition = "all 3s";
+                document.getElementById("whens").style.display = "block";
             }
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'orange';
             
@@ -1016,7 +1048,11 @@ function moveUp(event)
             document.getElementById("P"+x+"-"+y).style.backgroundColor = 'beige';
             document.getElementById("P"+x+"-"+y).innerHTML = '';
 
-            alert("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds");
+            document.getElementById("whens").innerHTML = ("YOU LOST!!!  Final Score: " +score+ "     Time taken: "+minutes+" minutes and " +seconds+ " seconds");
+            document.getElementById("whens").style.backgroundColor = 'rgba(199, 7, 7, 0.473)';
+            document.getElementById("whens").style.transform = "scale(2)";
+            document.getElementById("whens").style.transition = "all 3s";
+            document.getElementById("whens").style.display = "block";
             if (L1active == true)
             {
             y = 0;
